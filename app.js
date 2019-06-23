@@ -1,13 +1,13 @@
 var cheerio = require("cheerio");
 var axios = require("axios");
-var results = [];
 
-var item="car";
-var city="orlando";
 
+
+module.exports={ searchItems: function(item,city){
 axios.get(`https://${city}.craigslist.org/search/sss?query=${item}`).then(function(response) {
 
   var $ = cheerio.load(response.data);
+  var results = [];
 
   $(".result-row").each(function(i, element) {
 
@@ -22,7 +22,22 @@ axios.get(`https://${city}.craigslist.org/search/sss?query=${item}`).then(functi
     });
         
   });
-
-  console.log(results);
+  return results;
 });
 
+},
+//Return the location of a posted item 
+getLocation: function(link){
+var results = [];
+axios.get(link).then(function(response){
+var $=cheerio.load(response.data);
+
+
+
+
+})
+
+    
+}
+
+};
