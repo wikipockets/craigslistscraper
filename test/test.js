@@ -22,7 +22,7 @@ describe("searchItems", function() {
         })
   })
 
-
-
-
+  it("should throw undefined item error if item is null or undefined", function(){
+            expect(app.searchItems(undefined,"orlando")).to.throw("item");
+        })
 });
